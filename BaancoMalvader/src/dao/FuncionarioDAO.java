@@ -19,7 +19,7 @@ public class FuncionarioDAO {
             stmt.setString(3, funcionario.getCpf());
             stmt.setString(4, String.valueOf(funcionario.getDataNascimento()));
             stmt.setString(5, funcionario.getTelefone());
-            stmt.setString(6, funcionario.getEndereco());
+            stmt.setString(6, funcionario.getEndereco().toString());
             stmt.setString(7, funcionario.getCodigoFuncionario());
             stmt.setString(8, funcionario.getCargo());
             stmt.setString(9, funcionario.getSenha());
@@ -39,7 +39,7 @@ public class FuncionarioDAO {
             stmt.setString(2, funcionario.getCpf());
             stmt.setString(3, String.valueOf(funcionario.getDataNascimento()));
             stmt.setString(4, funcionario.getTelefone());
-            stmt.setString(5, funcionario.getEndereco());
+            stmt.setString(5, funcionario.getEndereco().toString());
             stmt.setString(6, funcionario.getCodigoFuncionario());
             stmt.setString(7, funcionario.getCargo());
             stmt.setString(8, funcionario.getSenha());
@@ -61,7 +61,7 @@ public class FuncionarioDAO {
         }
     }
 
-    public Funcionario findById(int id) {
+    /*public Funcionario findById(int id) {
         String sql = "SELECT * FROM funcionario WHERE id = ?";
         try (Connection conn = ConnectionFactory.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -85,5 +85,5 @@ public class FuncionarioDAO {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }

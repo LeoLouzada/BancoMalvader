@@ -1,5 +1,6 @@
 package controller;
 
+import model.Cliente;
 import model.Conta;
 import model.Funcionario;
 import util.DataManager;
@@ -11,10 +12,12 @@ public class BancoController {
 
     private List<Conta> contas;
     private List<Funcionario> funcionarios;
+    private List<Cliente> clientes;
 
     public BancoController() {
         contas = new ArrayList<>();
         funcionarios = new ArrayList<>();
+        clientes = new ArrayList<>();
     }
 
     public void abrirConta(Conta conta){
@@ -52,5 +55,29 @@ public class BancoController {
 
     public void carregarDados(){
         DataManager.carregarContas("contas.dat");
+    }
+
+    public List<Conta> getContas() {
+        return contas;
+    }
+
+    public void setContas(List<Conta> contas) {
+        this.contas = contas;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 }

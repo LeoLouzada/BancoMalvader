@@ -20,6 +20,6 @@ public class FuncionarioController {
     }
 
     public void pesquisarFuncionario(Funcionario funcionario){
-        funcionarioDAO.findById(funcionario.getId());
+        //funcionarioDAO.findById(funcionario.getId());
     }
 }

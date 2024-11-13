@@ -1,53 +1,46 @@
 package view;
 
-import controller.BancoController;
-
 import javax.swing.*;
+import java.awt.*;
+import controller.LoginController;
 
 public class LoginView extends JFrame {
-
     private JTextField usuarioField;
     private JPasswordField senhaField;
-    private JButton btnFuncionario;
-    private JButton btnCliente;
+    private JButton btnFuncionario, btnCliente;
+    private LoginController loginController;
 
     public LoginView() {
-        setTitle("Tela de Login");
+        setTitle("Login");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+        setLayout(new GridLayout(3, 2));
 
         usuarioField = new JTextField();
         senhaField = new JPasswordField();
-        btnFuncionario = new JButton("Acesso Funcionário");
-        btnCliente = new JButton("Acesso Cliente");
+        btnFuncionario = new JButton("Funcionário");
+        btnCliente = new JButton("Cliente");
 
-        usuarioField.setBounds(80, 30, 150, 20);
-        senhaField.setBounds(80, 60, 150, 20);
-        btnFuncionario.setBounds(50, 100, 180, 25);
-        btnCliente.setBounds(50, 130, 180, 25);
+        loginController = new LoginController(this);
 
-        add(new JLabel("Usuário:")).setBounds(20, 30, 50, 20);
+        add(new JLabel("Usuário:"));
         add(usuarioField);
-        add(new JLabel("Senha:")).setBounds(20, 60, 50, 20);
+        add(new JLabel("Senha:"));
         add(senhaField);
         add(btnFuncionario);
         add(btnCliente);
 
-        btnFuncionario.addActionListener(e -> autenticar("funcionario"));
-        btnCliente.addActionListener(e -> autenticar("cliente"));
+        btnFuncionario.addActionListener(e -> loginController.autenticar("funcionario"));
+        btnCliente.addActionListener(e -> loginController.autenticar("cliente"));
+
+        setLocationRelativeTo(null);
     }
 
-    public LoginView(BancoController bancoController) {
+    public String getUsuario() {
+        return usuarioField.getText();
     }
 
-    private void autenticar(String tipoUsuario) {
-        // Lógica de autenticação
-        if (tipoUsuario.equals("funcionario")) {
-            new MenuPrincipalView(tipoUsuario).setVisible(true);
-        } else {
-            new MenuPrincipalView(tipoUsuario).setVisible(true);
-        }
-        dispose(); // Fecha a tela de login
+    public String getSenha() {
+        return new String(senhaField.getPassword());
     }
 }

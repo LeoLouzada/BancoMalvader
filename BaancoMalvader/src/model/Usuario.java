@@ -1,5 +1,8 @@
 package model;
 
+import view.LoginView;
+
+import javax.swing.*;
 import java.time.LocalDate;
 
 public abstract class Usuario {
@@ -9,18 +12,31 @@ public abstract class Usuario {
     private String cpf;
     private LocalDate dataNascimento;
     private String telefone;
-    private String endereco;
+    private Endereco endereco;
 
-    public boolean login(String senha){
+    public abstract boolean login(String senha);
 
+    public Usuario(int id, String nome, String cpf, LocalDate dataNascimento, String telefone, Endereco endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
-    public void logout(){
+    public void logout(JFrame janelaAtual) {
+        // Fecha a janela atual
+        janelaAtual.dispose();
 
+        // Exibe a tela de login
+        SwingUtilities.invokeLater(() -> new LoginView().setVisible(true));
+
+        System.out.println("Usuário " + nome + " fez logout com sucesso.");
     }
 
     public String consultarDados(){
-
+        return "Nome: " + nome + ", CPF: " + cpf;
     }
 
     public int getId() {
@@ -63,11 +79,11 @@ public abstract class Usuario {
         this.telefone = telefone;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 }

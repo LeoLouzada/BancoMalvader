@@ -1,32 +1,33 @@
 package view;
 
 import javax.swing.*;
+import controller.MenuController;
+import java.awt.*;
 
 public class MenuPrincipalView extends JFrame {
+    private JButton btnFuncionario, btnCliente, btnSair;
+    private MenuController menuController;
 
-    private JButton btnFuncionario;
-    private JButton btnCliente;
-    private JButton btnSair;
-
-    public MenuPrincipalView(String tipoUsuario) {
+    public MenuPrincipalView() {
         setTitle("Menu Principal");
         setSize(300, 200);
-        setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(4, 1));
 
         btnFuncionario = new JButton("Funcionário");
         btnCliente = new JButton("Cliente");
         btnSair = new JButton("Sair");
 
-        btnFuncionario.setBounds(50, 30, 200, 25);
-        btnCliente.setBounds(50, 70, 200, 25);
-        btnSair.setBounds(50, 110, 200, 25);
+        menuController = new MenuController(this);
 
         add(btnFuncionario);
         add(btnCliente);
         add(btnSair);
 
-        btnFuncionario.addActionListener(e -> new MenuFuncionarioView().setVisible(true));
-        btnCliente.addActionListener(e -> new MenuClienteView().setVisible(true));
+        btnFuncionario.addActionListener(e -> menuController.acessarMenu("funcionario"));
+        btnCliente.addActionListener(e -> menuController.acessarMenu("cliente"));
         btnSair.addActionListener(e -> System.exit(0));
+
+        setLocationRelativeTo(null);
     }
 }

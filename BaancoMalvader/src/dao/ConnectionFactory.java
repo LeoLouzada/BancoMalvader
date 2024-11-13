@@ -11,11 +11,19 @@ public class ConnectionFactory {
     private static final String PASSWORD = "123456789";
 
     public static Connection getConnection(){
-
         try {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
-            throw new RuntimeException("Erro ao conectar com o banco de dados", e);
+            System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static void desconectar(Connection conn) {
+        try {
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            System.out.println("Erro ao desconectar: " + e.getMessage());
         }
     }
 }

@@ -45,7 +45,7 @@ public class ContaDAO {
         }
     }
 
-    public Conta findById(int numero) {
+    /*&public Conta findById(int numero) {
         String sql = "SELECT * FROM conta WHERE numero = ?";
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -68,5 +68,5 @@ public class ContaDAO {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 }

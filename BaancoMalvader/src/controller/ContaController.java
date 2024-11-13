@@ -20,6 +20,6 @@ public class ContaController {
     }
 
     public void pesquisarConta(Conta conta){
-        contaDAO.findById(conta.getNumero());
+        //contaDAO.findById(conta.getNumero());
     }
 }

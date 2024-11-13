@@ -21,6 +21,15 @@ public class Endereco {
                 '}';
     }
 
+    public Endereco(String cep, String local, int numeroCasa, String bairro, String cidade, String estado) {
+        this.cep = cep;
+        this.local = local;
+        this.numeroCasa = numeroCasa;
+        this.bairro = bairro;
+        this.cidade = cidade;
+        this.estado = estado;
+    }
+
     public String getCep() {
         return cep;
     }

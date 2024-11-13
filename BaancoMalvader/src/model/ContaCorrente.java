@@ -2,13 +2,19 @@ package model;
 
 import java.time.LocalDate;
 
-public class ContaCorrente {
+public class ContaCorrente extends Conta{
 
     private double limite;
     private LocalDate dataVencimento;
 
-    public double consultarLimite(){
+    public ContaCorrente(int numero, String agencia, double saldo, Cliente cliente, double limite, LocalDate dataVencimento) {
+        super(numero, agencia, saldo, cliente);
+        this.limite = limite;
+        this.dataVencimento = dataVencimento;
+    }
 
+    public double consultarLimite(){
+        return limite;
     }
 
     public double getLimite() {

@@ -1,23 +1,22 @@
-import controller.BancoController;
 import view.LoginView;
+import controller.LoginController;
 
 public class BancoMalvader {
 
     public static void main(String[] args) {
-        // Inicializa o controlador principal
-        BancoController bancoController = new BancoController();
+        // Inicializando a aplicação
+        BancoMalvader bancoMalvader = new BancoMalvader();
+        bancoMalvader.iniciarAplicacao();
+    }
 
-        // Carrega os dados salvos
-        bancoController.carregarDados();
+    public void iniciarAplicacao() {
+        // Criação da tela de login e controlador
+        LoginView loginView = new LoginView();
+        LoginController loginController = new LoginController(loginView);
 
-        // Inicia a interface de login
-        LoginView loginView = new LoginView(bancoController);
+        // Exibindo a tela de login
         loginView.setVisible(true);
 
-        // Adiciona um shutdown hook para salvar os dados ao encerrar a aplicação
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            bancoController.salvarDados();
-            System.out.println("Dados salvos com sucesso ao encerrar a aplicação.");
-        }));
+        // A lógica de login será controlada pelo LoginController
     }
 }

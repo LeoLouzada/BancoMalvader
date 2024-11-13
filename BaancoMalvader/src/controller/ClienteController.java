@@ -20,6 +20,6 @@ public class ClienteController {
     }
 
     public void pesquisarFuncionario(Cliente cliente){
-        clienteDAO.findById(cliente.getId());
+        //clienteDAO.findById(cliente.getId());
     }
 }
